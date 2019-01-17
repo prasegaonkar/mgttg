@@ -1,6 +1,7 @@
 package guideToGalaxy.processor;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,7 +51,8 @@ public class ProcessingState {
 			metalPerUnitCreditValue = new HashMap<>();
 		}
 		Integer arabicNumber = getArabicConversion(aliases);
-		BigDecimal perUnitCreditValue = new BigDecimal(creditValue).divide(new BigDecimal(arabicNumber));
+		BigDecimal perUnitCreditValue = new BigDecimal(creditValue).divide(new BigDecimal(arabicNumber), 2,
+				RoundingMode.HALF_UP);
 		metalPerUnitCreditValue.put(metalType, perUnitCreditValue);
 	}
 

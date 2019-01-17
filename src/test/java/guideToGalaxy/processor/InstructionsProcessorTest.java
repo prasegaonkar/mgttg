@@ -57,8 +57,8 @@ public class InstructionsProcessorTest {
 		final Map<String, BigDecimal> metalPerUnitCreditValue = state.getMetalPerUnitCreditValue();
 		assertThat(metalPerUnitCreditValue).isNotNull();
 		assertThat(metalPerUnitCreditValue.size()).isEqualTo(3);
-		assertThat(metalPerUnitCreditValue.get("Silver")).isEqualTo(17);
-		assertThat(metalPerUnitCreditValue.get("Gold")).isEqualTo(57800 / 4);
+		assertThat(metalPerUnitCreditValue.get("Silver")).isEqualByComparingTo(new BigDecimal(17));
+		assertThat(metalPerUnitCreditValue.get("Gold")).isEqualByComparingTo(new BigDecimal(57800 / 4));
 		assertThat(metalPerUnitCreditValue.get("Iron")).isEqualTo(3910 / 20);
 		final List<String> responses = state.getResponses();
 		assertThat(responses).isNotNull();
