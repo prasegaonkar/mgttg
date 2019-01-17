@@ -13,13 +13,25 @@ public class QueryParser {
 			return queryType;
 		}
 		queryType = literalDeclarationCheck(query);
+		if (QueryType.INVALID.equals(queryType) == false) {
+			return queryType;
+		}
+		queryType = creditsDeclarationCheck(query);
 		return queryType;
 	}
 
-	private QueryType literalDeclarationCheck(String query) {
-		String validQueryPattern = ".* is [I,V,X,L,C,D,M]";
+	private QueryType creditsDeclarationCheck(String query) {
+		String validQueryPattern = ".* (?:Silver|Gold|Iron) is \\d+ Credits";
+		if (query.matches(validQueryPattern)) {
+			return QueryType.CREDITS_DECLARATION;
+		}
+		return QueryType.INVALID;
+	}
 
-		if (query.matches(validQueryPattern) && query.split("\\s").length == 3) {
+	private QueryType literalDeclarationCheck(String query) {
+		String validQueryPattern = "\\w+{1} is (?:I|V|X|L|C|D|M)";
+
+		if (query.matches(validQueryPattern)) {
 			return QueryType.LITERAL_DECLARATION;
 		}
 		return QueryType.INVALID;

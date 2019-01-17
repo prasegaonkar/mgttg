@@ -33,13 +33,13 @@ public class QueryParserTest {
 	}
 
 	@Test
-	public void testDeclarationForInvalidLength() {
+	public void testLiteralDeclarationForInvalidLength() {
 		validateQueryType("glob is I J", QueryType.INVALID);
 		validateQueryType("glob is ", QueryType.INVALID);
 	}
 
 	@Test
-	public void testDeclarationWithValidLiterals() {
+	public void testLiteralDeclarationWithValidLiterals() {
 		validateQueryType("glob is I", QueryType.LITERAL_DECLARATION);
 		validateQueryType("glob is V", QueryType.LITERAL_DECLARATION);
 		validateQueryType("glob is X", QueryType.LITERAL_DECLARATION);
@@ -50,7 +50,19 @@ public class QueryParserTest {
 	}
 
 	@Test
-	public void testDeclarationWithInvalidLiterals() {
+	public void testLiteralDeclarationWithInvalidLiterals() {
 		validateQueryType("glob is A", QueryType.INVALID);
+	}
+
+	@Test
+	public void testCreditsDeclarationForValidPattern() {
+		validateQueryType("glob glob Silver is 34 Credits", QueryType.CREDITS_DECLARATION);
+	}
+
+	@Test
+	public void testCreditsDeclarationForInvalidPatterns() {
+		validateQueryType("glob glob Silver is xx Credits", QueryType.INVALID);
+		validateQueryType("glob glob Silver is 34 Credit", QueryType.INVALID);
+		validateQueryType("glob glob Titanium is 34 Credits", QueryType.INVALID);
 	}
 }
