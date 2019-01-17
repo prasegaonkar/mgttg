@@ -18,7 +18,9 @@ public class LiteralDeclarationQuery extends Query {
 
 	@Override
 	public void parse(String instruction) {
-
+		String[] splits = instruction.split(" is ");
+		literalAlias = splits[0].trim();
+		literal = splits[1].trim();
 	}
 
 }
