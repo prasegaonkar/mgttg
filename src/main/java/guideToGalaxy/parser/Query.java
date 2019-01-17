@@ -1,6 +1,6 @@
-package guideToGalaxy;
+package guideToGalaxy.parser;
 
-public class Query {
+public abstract class Query {
 
 	private QueryType queryType;
 
@@ -11,4 +11,7 @@ public class Query {
 	public QueryType getQueryType() {
 		return queryType;
 	}
+
+	public abstract void parse(String instruction);
+
 }
