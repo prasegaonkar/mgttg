@@ -65,4 +65,30 @@ public class QueryParserTest {
 		validateQueryType("glob glob Silver is 34 Credit", QueryType.INVALID);
 		validateQueryType("glob glob Titanium is 34 Credits", QueryType.INVALID);
 	}
+
+	@Test
+	public void testLiteralsQuestionForValidPattern() {
+		validateQueryType("how much is pish tegj glob glob ?", QueryType.LITERAL_QUESTION);
+	}
+
+	@Test
+	public void testLiteralsQuestionForInvalidPattern() {
+		validateQueryType("how much is pish tegj glob glob?", QueryType.INVALID);
+		validateQueryType("much is pish tegj glob glob?", QueryType.INVALID);
+		validateQueryType("how much is ?", QueryType.INVALID);
+		validateQueryType("how much is pish tegj glob glob ??", QueryType.INVALID);
+	}
+
+	@Test
+	public void testCreditsQuestionForValidPattern() {
+		validateQueryType("how many Credits is glob prok Silver ?", QueryType.CREDITS_QUESTION);
+	}
+
+	@Test
+	public void testCreditsQuestionForInvalidPattern() {
+		validateQueryType("how many Credits is glob prok Silver?", QueryType.INVALID);
+		validateQueryType("many Credits is glob prok Silver ?", QueryType.INVALID);
+		validateQueryType("how many Credits is Silver ?", QueryType.INVALID);
+		validateQueryType("how many Credits is glob prok Silver ??", QueryType.INVALID);
+	}
 }

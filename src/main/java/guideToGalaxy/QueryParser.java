@@ -17,7 +17,31 @@ public class QueryParser {
 			return queryType;
 		}
 		queryType = creditsDeclarationCheck(query);
+		if (QueryType.INVALID.equals(queryType) == false) {
+			return queryType;
+		}
+		queryType = literalQuestionCheck(query);
+		if (QueryType.INVALID.equals(queryType) == false) {
+			return queryType;
+		}
+		queryType = creditsQuestionCheck(query);
 		return queryType;
+	}
+
+	private QueryType creditsQuestionCheck(String query) {
+		String validQueryPattern = "(how many Credits is .* )(?:Silver|Gold|Iron) \\?";
+		if (query.matches(validQueryPattern)) {
+			return QueryType.CREDITS_QUESTION;
+		}
+		return QueryType.INVALID;
+	}
+
+	private QueryType literalQuestionCheck(String query) {
+		String validQueryPattern = "(how much is .*) \\?";
+		if (query.matches(validQueryPattern)) {
+			return QueryType.LITERAL_QUESTION;
+		}
+		return QueryType.INVALID;
 	}
 
 	private QueryType creditsDeclarationCheck(String query) {
