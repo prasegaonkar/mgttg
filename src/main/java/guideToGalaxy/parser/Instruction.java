@@ -1,5 +1,7 @@
 package guideToGalaxy.parser;
 
+import guideToGalaxy.processor.ProcessingState;
+
 public abstract class Instruction {
 
 	private InstructionType type;
@@ -13,5 +15,7 @@ public abstract class Instruction {
 	}
 
 	public abstract void parse(String input);
+
+	public abstract void updateProcessingState(ProcessingState state);
 
 }

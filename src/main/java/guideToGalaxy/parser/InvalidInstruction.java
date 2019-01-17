@@ -1,5 +1,7 @@
 package guideToGalaxy.parser;
 
+import guideToGalaxy.processor.ProcessingState;
+
 public class InvalidInstruction extends Instruction {
 
 	InvalidInstruction() {
@@ -9,6 +11,11 @@ public class InvalidInstruction extends Instruction {
 	@Override
 	public void parse(String instruction) {
 
+	}
+
+	@Override
+	public void updateProcessingState(ProcessingState state) {
+		
 	}
 
 }

@@ -3,6 +3,8 @@ package guideToGalaxy.parser;
 import java.util.ArrayList;
 import java.util.List;
 
+import guideToGalaxy.processor.ProcessingState;
+
 public class CreditsQuestionInstruction extends Instruction {
 	private List<String> aliases;
 	private String metalType;
@@ -28,6 +30,11 @@ public class CreditsQuestionInstruction extends Instruction {
 
 	public String getMetalType() {
 		return metalType;
+	}
+
+	@Override
+	public void updateProcessingState(ProcessingState state) {
+		
 	}
 
 }

@@ -12,7 +12,7 @@ public class InstructionParserTest {
 
 	@Before
 	public void setup() {
-		parser = new InstructionParser();
+		parser = new MGTTGInstructionParser();
 	}
 
 	private void validateType(String input, InstructionType expectedType) {

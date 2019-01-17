@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import guideToGalaxy.processor.ProcessingState;
+
 public class LiteralQuestionInstruction extends Instruction {
 	private List<String> aliases;
 
@@ -20,6 +22,10 @@ public class LiteralQuestionInstruction extends Instruction {
 
 	public List<String> getAliases() {
 		return aliases;
+	}
+
+	@Override
+	public void updateProcessingState(ProcessingState state) {
 	}
 
 }

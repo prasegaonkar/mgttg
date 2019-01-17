@@ -1,5 +1,7 @@
 package guideToGalaxy.parser;
 
+import guideToGalaxy.processor.ProcessingState;
+
 public class LiteralDeclarationInstruction extends Instruction {
 	private String literalAlias;
 	private String literal;
@@ -21,6 +23,10 @@ public class LiteralDeclarationInstruction extends Instruction {
 		String[] splits = input.split(" is ");
 		literalAlias = splits[0].trim();
 		literal = splits[1].trim();
+	}
+
+	@Override
+	public void updateProcessingState(ProcessingState state) {
 	}
 
 }
