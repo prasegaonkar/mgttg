@@ -1,11 +1,11 @@
 package guideToGalaxy.parser;
 
-public class LiteralDeclarationQuery extends Query {
+public class LiteralDeclarationInstruction extends Instruction {
 	private String literalAlias;
 	private String literal;
 
-	LiteralDeclarationQuery() {
-		super(QueryType.LITERAL_DECLARATION);
+	LiteralDeclarationInstruction() {
+		super(InstructionType.LITERAL_DECLARATION);
 	}
 
 	public String getLiteralAlias() {
@@ -17,8 +17,8 @@ public class LiteralDeclarationQuery extends Query {
 	}
 
 	@Override
-	public void parse(String instruction) {
-		String[] splits = instruction.split(" is ");
+	public void parse(String input) {
+		String[] splits = input.split(" is ");
 		literalAlias = splits[0].trim();
 		literal = splits[1].trim();
 	}

@@ -3,13 +3,13 @@ package guideToGalaxy.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreditsDeclarationQuery extends Query {
+public class CreditsDeclarationInstruction extends Instruction {
 	private List<String> aliases;
 	private Integer creditValue;
 	private String metalType;
 
-	CreditsDeclarationQuery() {
-		super(QueryType.CREDITS_DECLARATION);
+	CreditsDeclarationInstruction() {
+		super(InstructionType.CREDITS_DECLARATION);
 	}
 
 	@Override

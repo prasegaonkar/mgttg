@@ -1,6 +1,6 @@
 package guideToGalaxy.parser;
 
-public enum QueryType {
+public enum InstructionType {
 	INVALID("X"),
 
 	LITERAL_DECLARATION("\\w+{1} is (?:I|V|X|L|C|D|M)"),
@@ -13,7 +13,7 @@ public enum QueryType {
 
 	private String matchingPattern;
 
-	QueryType(String matchingPattern) {
+	InstructionType(String matchingPattern) {
 		this.matchingPattern = matchingPattern;
 	}
 
