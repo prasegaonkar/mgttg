@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 
+import guideToGalaxy.convertor.NumberConvertor;
 import guideToGalaxy.parser.MGTTGInstructionParser;
 
 public class InstructionsProcessorTest {
@@ -23,7 +24,7 @@ public class InstructionsProcessorTest {
 
 	@Before
 	public void setup() {
-		processor = new InstructionsProcessor(new MGTTGInstructionParser());
+		processor = new InstructionsProcessor(new MGTTGInstructionParser(), new NumberConvertor());
 	}
 
 	@Test
@@ -45,13 +46,14 @@ public class InstructionsProcessorTest {
 		assertThat(lines.size()).isEqualTo(12);
 		ProcessingState state = processor.process(lines);
 		assertThat(state).isNotNull();
-		assertThat(state.getAliasOfLiteral_C()).isNull();
-		assertThat(state.getAliasOfLiteral_D()).isNull();
-		assertThat(state.getAliasOfLiteral_I()).isEqualTo("glob");
-		assertThat(state.getAliasOfLiteral_L()).isEqualTo("tegj");
-		assertThat(state.getAliasOfLiteral_M()).isNull();
-		assertThat(state.getAliasOfLiteral_V()).isEqualTo("prok");
-		assertThat(state.getAliasOfLiteral_X()).isEqualTo("pish");
+		final Map<String, Character> aliasLiteralMappings = state.getAliasLiteralMappings();
+		assertThat(aliasLiteralMappings).isNotNull();
+		assertThat(aliasLiteralMappings.get("glob")).isEqualTo('I');
+		assertThat(aliasLiteralMappings.get("tegj")).isEqualTo('L');
+		assertThat(aliasLiteralMappings.get("prok")).isEqualTo('V');
+		assertThat(aliasLiteralMappings.get("pish")).isEqualTo('X');
+		assertThat(aliasLiteralMappings.values()).contains('I', 'L', 'V', 'X');
+		assertThat(aliasLiteralMappings.keySet()).contains("glob", "tegj", "prok", "pish");
 		final Map<String, BigDecimal> metalPerUnitCreditValue = state.getMetalPerUnitCreditValue();
 		assertThat(metalPerUnitCreditValue).isNotNull();
 		assertThat(metalPerUnitCreditValue.size()).isEqualTo(3);

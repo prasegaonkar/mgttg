@@ -26,6 +26,10 @@ public class LiteralQuestionInstruction extends Instruction {
 
 	@Override
 	public void updateProcessingState(ProcessingState state) {
+		StringBuilder responseBuilder = new StringBuilder();
+		responseBuilder.append(aliases.stream().collect(Collectors.joining(" ")));
+		responseBuilder.append(" is " + state.getArabicConversion(aliases));
+		state.addResponse(responseBuilder.toString());
 	}
 
 }

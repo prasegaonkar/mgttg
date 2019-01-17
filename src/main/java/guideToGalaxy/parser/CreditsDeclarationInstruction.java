@@ -44,7 +44,7 @@ public class CreditsDeclarationInstruction extends Instruction {
 
 	@Override
 	public void updateProcessingState(ProcessingState state) {
-		
+		state.calculatePerUnitCreditValue(metalType, aliases, creditValue);
 	}
 
 }

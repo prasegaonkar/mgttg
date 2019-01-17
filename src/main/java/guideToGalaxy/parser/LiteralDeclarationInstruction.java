@@ -27,31 +27,7 @@ public class LiteralDeclarationInstruction extends Instruction {
 
 	@Override
 	public void updateProcessingState(ProcessingState state) {
-		switch (literal) {
-		case 'I':
-			state.setAliasOfLiteral_I(literalAlias);
-			break;
-		case 'V':
-			state.setAliasOfLiteral_V(literalAlias);
-			break;
-		case 'X':
-			state.setAliasOfLiteral_X(literalAlias);
-			break;
-		case 'L':
-			state.setAliasOfLiteral_L(literalAlias);
-			break;
-		case 'C':
-			state.setAliasOfLiteral_C(literalAlias);
-			break;
-		case 'D':
-			state.setAliasOfLiteral_D(literalAlias);
-			break;
-		case 'M':
-			state.setAliasOfLiteral_M(literalAlias);
-			break;
-		default:
-			break;
-		}
+		state.registerAliasLiteralMapping(literalAlias, literal);
 	}
 
 }

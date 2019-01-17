@@ -15,7 +15,7 @@ public class InvalidInstruction extends Instruction {
 
 	@Override
 	public void updateProcessingState(ProcessingState state) {
-		
+		state.addResponse("I have no idea what you are talking about");
 	}
 
 }

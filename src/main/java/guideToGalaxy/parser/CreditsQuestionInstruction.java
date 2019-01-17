@@ -2,6 +2,7 @@ package guideToGalaxy.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import guideToGalaxy.processor.ProcessingState;
 
@@ -34,7 +35,12 @@ public class CreditsQuestionInstruction extends Instruction {
 
 	@Override
 	public void updateProcessingState(ProcessingState state) {
-		
+		StringBuilder responseBuilder = new StringBuilder();
+		responseBuilder.append(aliases.stream().collect(Collectors.joining(" ")));
+		responseBuilder.append(" " + metalType);
+		responseBuilder.append(" is " + state.calculateCredits(metalType, aliases));
+		state.addResponse(responseBuilder.toString());
+		state.calculateCredits(metalType, aliases);
 	}
 
 }
