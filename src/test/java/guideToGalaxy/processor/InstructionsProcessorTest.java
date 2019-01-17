@@ -53,6 +53,7 @@ public class InstructionsProcessorTest {
 		assertThat(state.getAliasOfLiteral_V()).isEqualTo("prok");
 		assertThat(state.getAliasOfLiteral_X()).isEqualTo("pish");
 		final Map<String, BigDecimal> metalPerUnitCreditValue = state.getMetalPerUnitCreditValue();
+		assertThat(metalPerUnitCreditValue).isNotNull();
 		assertThat(metalPerUnitCreditValue.size()).isEqualTo(3);
 		assertThat(metalPerUnitCreditValue.get("Silver")).isEqualTo(17);
 		assertThat(metalPerUnitCreditValue.get("Gold")).isEqualTo(57800 / 4);

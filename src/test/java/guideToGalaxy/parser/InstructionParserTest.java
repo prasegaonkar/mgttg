@@ -15,10 +15,6 @@ public class InstructionParserTest {
 		parser = new MGTTGInstructionParser();
 	}
 
-	private void validateType(String input, InstructionType expectedType) {
-		assertThat(parser.parse(input).getType()).isEqualTo(expectedType);
-	}
-
 	@Test
 	public void nullInputIsInvalidInstruction() {
 		validateType(null, InstructionType.INVALID);
@@ -113,10 +109,10 @@ public class InstructionParserTest {
 
 	@Test
 	public void validateSampleInputForParsedInstruction() {
-		validateLiteralDeclarationInstruction("glob is I", "glob", "I");
-		validateLiteralDeclarationInstruction("prok is V", "prok", "V");
-		validateLiteralDeclarationInstruction("pish is X", "pish", "X");
-		validateLiteralDeclarationInstruction("tegj is L", "tegj", "L");
+		validateLiteralDeclarationInstruction("glob is I", "glob", 'I');
+		validateLiteralDeclarationInstruction("prok is V", "prok", 'V');
+		validateLiteralDeclarationInstruction("pish is X", "pish", 'X');
+		validateLiteralDeclarationInstruction("tegj is L", "tegj", 'L');
 		validateCreditsDeclarationInstruction("glob glob Silver is 34 Credits", "Silver", 34, "glob", "glob");
 		validateCreditsDeclarationInstruction("glob prok Gold is 57800 Credits", "Gold", 57800, "glob", "prok");
 		validateCreditsDeclarationInstruction("pish pish Iron is 3910 Credits", "Iron", 3910, "pish", "pish");
@@ -124,6 +120,10 @@ public class InstructionParserTest {
 		validateCreditsQuestionInstruction("how many Credits is glob prok Silver ?", "Silver", "glob", "prok");
 		validateCreditsQuestionInstruction("how many Credits is glob prok Gold ?", "Gold", "glob", "prok");
 		validateCreditsQuestionInstruction("how many Credits is glob prok Iron ?", "Iron", "glob", "prok");
+	}
+
+	private void validateType(String input, InstructionType expectedType) {
+		assertThat(parser.parse(input).getType()).isEqualTo(expectedType);
 	}
 
 	private void validateCreditsQuestionInstruction(String input, String metalType, String... aliases) {
@@ -151,7 +151,7 @@ public class InstructionParserTest {
 		assertThat(cdi.getAliases()).isEqualTo(Arrays.asList(aliases));
 	}
 
-	private void validateLiteralDeclarationInstruction(String input, String alias, String literal) {
+	private void validateLiteralDeclarationInstruction(String input, String alias, Character literal) {
 		Instruction instruction = parser.parse(input);
 		assertThat(instruction).isInstanceOf(LiteralDeclarationInstruction.class);
 		LiteralDeclarationInstruction ldi = ((LiteralDeclarationInstruction) instruction);
