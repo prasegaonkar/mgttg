@@ -45,34 +45,44 @@ public class NumberConvertorTest {
 
 	@Test
 	public void conversionForOneValidLiteral() {
-		assertThat(convertor.convert("I")).isEqualTo(1);
-		assertThat(convertor.convert("V")).isEqualTo(5);
-		assertThat(convertor.convert("X")).isEqualTo(10);
-		assertThat(convertor.convert("L")).isEqualTo(50);
-		assertThat(convertor.convert("C")).isEqualTo(100);
-		assertThat(convertor.convert("D")).isEqualTo(500);
-		assertThat(convertor.convert("M")).isEqualTo(1000);
+		validateConversion("I", 1);
+		validateConversion("V", 5);
+		validateConversion("X", 10);
+		validateConversion("L", 50);
+		validateConversion("C", 100);
+		validateConversion("D", 500);
+		validateConversion("M", 1000);
 	}
 
 	@Test
 	public void conversionForTwoValidLiteralsStartingWithI() {
-		assertThat(convertor.convert("II")).isEqualTo(2);
-		assertThat(convertor.convert("IV")).isEqualTo(4);
-		assertThat(convertor.convert("IX")).isEqualTo(9);
+		validateConversion("II", 2);
+		validateConversion("IV", 4);
+		validateConversion("IX", 9);
 	}
 
 	@Test
 	public void conversionForTwoValidLiteralsStartingWithV() {
-		assertThat(convertor.convert("VI")).isEqualTo(6);
+		validateConversion("VI", 6);
 	}
 
 	@Test
 	public void conversionForTwoValidLiteralsStartingWithX() {
-		assertThat(convertor.convert("XI")).isEqualTo(11);
-		assertThat(convertor.convert("XV")).isEqualTo(15);
-		assertThat(convertor.convert("XX")).isEqualTo(20);
-		assertThat(convertor.convert("XL")).isEqualTo(40);
-		assertThat(convertor.convert("XC")).isEqualTo(90);
+		validateConversion("XI", 11);
+		validateConversion("XV", 15);
+		validateConversion("XX", 20);
+		validateConversion("XL", 40);
+		validateConversion("XC", 90);
+	}
+
+	@Test
+	public void testNumberConversion() {
+		validateConversion("MCMXLIV", 1944);
+		validateConversion("MCMIII", 1903);
+	}
+
+	private void validateConversion(final String romanNumber, final int expected) {
+		assertThat(convertor.convert(romanNumber)).isEqualTo(expected);
 	}
 
 }

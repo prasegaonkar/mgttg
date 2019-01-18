@@ -96,10 +96,4 @@ public class NumberConvertor {
 		return hasInvalidCharacter;
 	}
 
-	public static void main(String[] args) {
-		NumberConvertor c = new NumberConvertor();
-		Integer convert = c.convert("IV");
-		System.out.println(convert);
-	}
-
 }
