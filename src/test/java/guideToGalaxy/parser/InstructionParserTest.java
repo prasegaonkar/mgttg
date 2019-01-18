@@ -7,6 +7,13 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
+import guideToGalaxy.instructions.CreditsDeclarationInstruction;
+import guideToGalaxy.instructions.CreditsQuestionInstruction;
+import guideToGalaxy.instructions.Instruction;
+import guideToGalaxy.instructions.InstructionType;
+import guideToGalaxy.instructions.LiteralDeclarationInstruction;
+import guideToGalaxy.instructions.LiteralQuestionInstruction;
+
 public class InstructionParserTest {
 	private InstructionParser parser = null;
 

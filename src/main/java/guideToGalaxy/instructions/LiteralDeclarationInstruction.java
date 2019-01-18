@@ -1,14 +1,10 @@
-package guideToGalaxy.parser;
+package guideToGalaxy.instructions;
 
 import guideToGalaxy.processor.ProcessingState;
 
-public class LiteralDeclarationInstruction extends Instruction {
+public class LiteralDeclarationInstruction implements ParseableInstruction {
 	private String literalAlias;
 	private Character literal;
-
-	LiteralDeclarationInstruction() {
-		super(InstructionType.LITERAL_DECLARATION);
-	}
 
 	public String getLiteralAlias() {
 		return literalAlias;
@@ -28,6 +24,11 @@ public class LiteralDeclarationInstruction extends Instruction {
 	@Override
 	public void updateProcessingState(ProcessingState state) {
 		state.registerAliasLiteralMapping(literalAlias, literal);
+	}
+
+	@Override
+	public InstructionType getType() {
+		return InstructionType.LITERAL_DECLARATION;
 	}
 
 }

@@ -1,4 +1,4 @@
-package guideToGalaxy.parser;
+package guideToGalaxy.instructions;
 
 public enum InstructionType {
 	INVALID("X"),

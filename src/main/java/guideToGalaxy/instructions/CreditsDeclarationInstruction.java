@@ -1,18 +1,14 @@
-package guideToGalaxy.parser;
+package guideToGalaxy.instructions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import guideToGalaxy.processor.ProcessingState;
 
-public class CreditsDeclarationInstruction extends Instruction {
+public class CreditsDeclarationInstruction implements ParseableInstruction {
 	private List<String> aliases;
 	private Integer creditValue;
 	private String metalType;
-
-	CreditsDeclarationInstruction() {
-		super(InstructionType.CREDITS_DECLARATION);
-	}
 
 	@Override
 	public void parse(String instruction) {
@@ -45,6 +41,11 @@ public class CreditsDeclarationInstruction extends Instruction {
 	@Override
 	public void updateProcessingState(ProcessingState state) {
 		state.calculatePerUnitCreditValue(metalType, aliases, creditValue);
+	}
+
+	@Override
+	public InstructionType getType() {
+		return InstructionType.CREDITS_DECLARATION;
 	}
 
 }

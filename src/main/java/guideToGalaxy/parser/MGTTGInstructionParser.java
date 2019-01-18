@@ -1,10 +1,15 @@
 package guideToGalaxy.parser;
 
-import static guideToGalaxy.parser.InstructionType.CREDITS_DECLARATION;
-import static guideToGalaxy.parser.InstructionType.CREDITS_QUESTION;
-import static guideToGalaxy.parser.InstructionType.INVALID;
-import static guideToGalaxy.parser.InstructionType.LITERAL_DECLARATION;
-import static guideToGalaxy.parser.InstructionType.LITERAL_QUESTION;
+import static guideToGalaxy.instructions.InstructionType.CREDITS_DECLARATION;
+import static guideToGalaxy.instructions.InstructionType.CREDITS_QUESTION;
+import static guideToGalaxy.instructions.InstructionType.INVALID;
+import static guideToGalaxy.instructions.InstructionType.LITERAL_DECLARATION;
+import static guideToGalaxy.instructions.InstructionType.LITERAL_QUESTION;
+
+import guideToGalaxy.instructions.Instruction;
+import guideToGalaxy.instructions.InstructionBuilder;
+import guideToGalaxy.instructions.InstructionType;
+import guideToGalaxy.instructions.ParseableInstruction;
 
 public class MGTTGInstructionParser implements InstructionParser {
 
@@ -13,7 +18,7 @@ public class MGTTGInstructionParser implements InstructionParser {
 		final InstructionType type = determineType(input);
 		final Instruction instruction = InstructionBuilder.create(type);
 		if (InstructionType.INVALID.equals(type) == false) {
-			instruction.parse(input);
+			((ParseableInstruction) instruction).parse(input);
 		}
 		return instruction;
 	}

@@ -24,7 +24,7 @@ public class InstructionsProcessorTest {
 
 	@Before
 	public void setup() {
-		processor = new InstructionsProcessor(new MGTTGInstructionParser(), new RomanToArabicNumberConvertor());
+		processor = new MGTTGInstructionsProcessor(new MGTTGInstructionParser(), new RomanToArabicNumberConvertor());
 	}
 
 	@Test

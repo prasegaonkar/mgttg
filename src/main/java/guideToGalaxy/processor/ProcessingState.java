@@ -20,23 +20,11 @@ public class ProcessingState {
 		this.convertor = convertor;
 	}
 
-	public Map<String, BigDecimal> getMetalPerUnitCreditValue() {
-		return metalPerUnitCreditValue;
-	}
-
-	public List<String> getResponses() {
-		return responses;
-	}
-
 	public void registerAliasLiteralMapping(String alias, Character literal) {
 		if (aliasLiteralMappings == null) {
 			aliasLiteralMappings = new HashMap<>();
 		}
 		aliasLiteralMappings.put(alias, literal);
-	}
-
-	public Map<String, Character> getAliasLiteralMappings() {
-		return aliasLiteralMappings;
 	}
 
 	public void addResponse(String response) {
@@ -67,4 +55,17 @@ public class ProcessingState {
 				.collect(Collectors.joining());
 		return convertor.convert(romanNumber);
 	}
+
+	public Map<String, BigDecimal> getMetalPerUnitCreditValue() {
+		return metalPerUnitCreditValue;
+	}
+
+	public List<String> getResponses() {
+		return responses;
+	}
+
+	public Map<String, Character> getAliasLiteralMappings() {
+		return aliasLiteralMappings;
+	}
+
 }

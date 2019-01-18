@@ -1,4 +1,4 @@
-package guideToGalaxy.parser;
+package guideToGalaxy.instructions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,9 @@ import java.util.stream.Collectors;
 
 import guideToGalaxy.processor.ProcessingState;
 
-public class CreditsQuestionInstruction extends Instruction {
+public class CreditsQuestionInstruction implements ParseableInstruction {
 	private List<String> aliases;
 	private String metalType;
-
-	CreditsQuestionInstruction() {
-		super(InstructionType.CREDITS_QUESTION);
-	}
 
 	@Override
 	public void parse(String input) {
@@ -40,6 +36,11 @@ public class CreditsQuestionInstruction extends Instruction {
 		responseBuilder.append(" " + metalType);
 		responseBuilder.append(" is " + state.calculateCredits(metalType, aliases) + " Credits");
 		state.addResponse(responseBuilder.toString());
+	}
+
+	@Override
+	public InstructionType getType() {
+		return InstructionType.CREDITS_QUESTION;
 	}
 
 }

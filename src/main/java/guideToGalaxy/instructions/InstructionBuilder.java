@@ -1,4 +1,4 @@
-package guideToGalaxy.parser;
+package guideToGalaxy.instructions;
 
 public class InstructionBuilder {
 	public static Instruction create(InstructionType type) {

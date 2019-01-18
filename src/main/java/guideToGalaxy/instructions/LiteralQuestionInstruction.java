@@ -1,4 +1,4 @@
-package guideToGalaxy.parser;
+package guideToGalaxy.instructions;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,12 +6,8 @@ import java.util.stream.Stream;
 
 import guideToGalaxy.processor.ProcessingState;
 
-public class LiteralQuestionInstruction extends Instruction {
+public class LiteralQuestionInstruction implements ParseableInstruction {
 	private List<String> aliases;
-
-	LiteralQuestionInstruction() {
-		super(InstructionType.LITERAL_QUESTION);
-	}
 
 	@Override
 	public void parse(String input) {
@@ -30,6 +26,11 @@ public class LiteralQuestionInstruction extends Instruction {
 		responseBuilder.append(aliases.stream().collect(Collectors.joining(" ")));
 		responseBuilder.append(" is " + state.getArabicConversion(aliases));
 		state.addResponse(responseBuilder.toString());
+	}
+
+	@Override
+	public InstructionType getType() {
+		return InstructionType.LITERAL_QUESTION;
 	}
 
 }
