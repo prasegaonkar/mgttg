@@ -14,7 +14,11 @@ public class App {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new App().run(args);
+		if (args.length < 1) {
+			System.err.println("Specify input file path as command line argument");
+		} else {
+			new App().run(args);
+		}
 	}
 
 	private void run(String... args) throws Exception {
