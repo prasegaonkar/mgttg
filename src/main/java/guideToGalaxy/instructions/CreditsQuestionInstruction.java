@@ -23,11 +23,9 @@ public class CreditsQuestionInstruction implements ParseableInstruction {
 
 	@Override
 	public void updateProcessingState(ProcessingState state) {
-		StringBuilder responseBuilder = new StringBuilder();
-		responseBuilder.append(aliases.stream().collect(Collectors.joining(" ")));
-		responseBuilder.append(" " + metalType);
-		responseBuilder.append(" is " + state.calculateCredits(metalType, aliases) + " Credits");
-		state.addResponse(responseBuilder.toString());
+		String aliasSequence = aliases.stream().collect(Collectors.joining(" "));
+		Integer credits = state.calculateCredits(metalType, aliases);
+		state.addResponse(String.format("%s %s is %d Credits", aliasSequence, metalType, credits));
 	}
 
 	@Override

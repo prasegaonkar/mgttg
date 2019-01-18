@@ -18,10 +18,9 @@ public class LiteralQuestionInstruction implements ParseableInstruction {
 
 	@Override
 	public void updateProcessingState(ProcessingState state) {
-		StringBuilder responseBuilder = new StringBuilder();
-		responseBuilder.append(aliases.stream().collect(Collectors.joining(" ")));
-		responseBuilder.append(" is " + state.getArabicConversion(aliases));
-		state.addResponse(responseBuilder.toString());
+		String aliasSequence = aliases.stream().collect(Collectors.joining(" "));
+		final Integer arabicConversion = state.getArabicConversion(aliases);
+		state.addResponse(String.format("%s is %d", aliasSequence, arabicConversion));
 	}
 
 	@Override
