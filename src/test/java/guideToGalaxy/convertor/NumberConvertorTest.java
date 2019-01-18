@@ -53,4 +53,26 @@ public class NumberConvertorTest {
 		assertThat(convertor.convert("D")).isEqualTo(500);
 		assertThat(convertor.convert("M")).isEqualTo(1000);
 	}
+
+	@Test
+	public void conversionForTwoValidLiteralsStartingWithI() {
+		assertThat(convertor.convert("II")).isEqualTo(2);
+		assertThat(convertor.convert("IV")).isEqualTo(4);
+		assertThat(convertor.convert("IX")).isEqualTo(9);
+	}
+
+	@Test
+	public void conversionForTwoValidLiteralsStartingWithV() {
+		assertThat(convertor.convert("VI")).isEqualTo(6);
+	}
+
+	@Test
+	public void conversionForTwoValidLiteralsStartingWithX() {
+		assertThat(convertor.convert("XI")).isEqualTo(11);
+		assertThat(convertor.convert("XV")).isEqualTo(15);
+		assertThat(convertor.convert("XX")).isEqualTo(20);
+		assertThat(convertor.convert("XL")).isEqualTo(40);
+		assertThat(convertor.convert("XC")).isEqualTo(90);
+	}
+
 }

@@ -38,9 +38,8 @@ public class CreditsQuestionInstruction extends Instruction {
 		StringBuilder responseBuilder = new StringBuilder();
 		responseBuilder.append(aliases.stream().collect(Collectors.joining(" ")));
 		responseBuilder.append(" " + metalType);
-		responseBuilder.append(" is " + state.calculateCredits(metalType, aliases));
+		responseBuilder.append(" is " + state.calculateCredits(metalType, aliases) + " Credits");
 		state.addResponse(responseBuilder.toString());
-		state.calculateCredits(metalType, aliases);
 	}
 
 }

@@ -3,7 +3,6 @@ package guideToGalaxy.convertor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -60,19 +59,27 @@ public class NumberConvertor {
 	}
 
 	private Integer calcualate(List<Character> chars) {
-		Character prev = null;
-		Character curr = null;
-		Iterator<Character> itr = chars.iterator();
+		int cursor = 0;
+		Character i = null;
+		Character j = null;
 		Integer sum = 0;
-		while (itr.hasNext()) {
-			prev = curr;
-			curr = itr.next();
-			if (valueOf(prev) > valueOf(curr)) {
-				sum = sum + valueOf(curr);
+
+		while (cursor < chars.size()) {
+			i = chars.get(cursor);
+			if (cursor + 1 <= chars.size() - 1) {
+				j = chars.get(cursor + 1);
+				if (valueOf(i) >= valueOf(j)) {
+					sum += valueOf(i);
+				} else {
+					sum += (valueOf(j) - valueOf(i));
+					cursor++;
+				}
 			} else {
-				sum = sum + (valueOf(curr) - valueOf(prev));
+				sum += valueOf(i);
 			}
+			cursor++;
 		}
+
 		return sum;
 	}
 
@@ -87,6 +94,12 @@ public class NumberConvertor {
 		boolean hasInvalidCharacter = romanNumber.chars().mapToObj(c -> (char) c)
 				.anyMatch(x -> !validLiterals.contains(x));
 		return hasInvalidCharacter;
+	}
+
+	public static void main(String[] args) {
+		NumberConvertor c = new NumberConvertor();
+		Integer convert = c.convert("IV");
+		System.out.println(convert);
 	}
 
 }
