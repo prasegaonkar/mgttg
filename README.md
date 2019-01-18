@@ -11,7 +11,7 @@
 
 # Considerations
 
- - There could be cases or boundary conditions which might hae got missed or not are covered in the implemented solution. For such cases, this solution can be improved for such improvements, starting by adding failing tests. 
+ - There could be cases or boundary conditions which might hae got missed or not are covered in the implemented solution. For such cases, this solution can be updated for such improvements, starting by adding failing tests. 
  - The implemented behavior of this solution is defined entirely by written tests - nothing more, nothing less.
  - Maintainability, flexibility, testability are considered as underlying objectives for this approach.
  
