@@ -2,15 +2,15 @@ package guideToGalaxy.processor;
 
 import java.util.List;
 
-import guideToGalaxy.convertor.NumberConvertor;
+import guideToGalaxy.convertor.RomanNumberConvertor;
 import guideToGalaxy.parser.Instruction;
 import guideToGalaxy.parser.InstructionParser;
 
 public class InstructionsProcessor {
 	private final InstructionParser parser;
-	private final NumberConvertor convertor;
+	private final RomanNumberConvertor convertor;
 
-	public InstructionsProcessor(InstructionParser parser, NumberConvertor convertor) {
+	public InstructionsProcessor(InstructionParser parser, RomanNumberConvertor convertor) {
 		this.parser = parser;
 		this.convertor = convertor;
 	}

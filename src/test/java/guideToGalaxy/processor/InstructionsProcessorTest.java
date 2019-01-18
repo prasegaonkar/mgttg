@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 
-import guideToGalaxy.convertor.NumberConvertor;
+import guideToGalaxy.convertor.RomanToArabicNumberConvertor;
 import guideToGalaxy.parser.MGTTGInstructionParser;
 
 public class InstructionsProcessorTest {
@@ -24,7 +24,7 @@ public class InstructionsProcessorTest {
 
 	@Before
 	public void setup() {
-		processor = new InstructionsProcessor(new MGTTGInstructionParser(), new NumberConvertor());
+		processor = new InstructionsProcessor(new MGTTGInstructionParser(), new RomanToArabicNumberConvertor());
 	}
 
 	@Test

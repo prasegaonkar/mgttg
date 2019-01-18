@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import guideToGalaxy.convertor.NumberConvertor;
+import guideToGalaxy.convertor.RomanNumberConvertor;
 
 public class ProcessingState {
-	private NumberConvertor convertor;
+	private RomanNumberConvertor convertor;
 	private Map<String, Character> aliasLiteralMappings;
 	private Map<String, BigDecimal> metalPerUnitCreditValue;
 	private List<String> responses;
 
-	public ProcessingState(NumberConvertor convertor) {
+	public ProcessingState(RomanNumberConvertor convertor) {
 		this.convertor = convertor;
 	}
 
