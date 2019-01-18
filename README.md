@@ -2,8 +2,9 @@
 
 ## Application build and execute instructions
 
- - mgttg is a maven project, unzip the uploaded zip file that would create folder named `mgttg`
- - To build the application, execute `mvn clean package`. The executable jar `mgttg-0.0.1-SNAPSHOT.jar` is created under `target` folder.
+ - mgttg is a maven project.
+ - To setup, unzip the uploaded file that would create folder named `mgttg`.
+ - To build the application, execute `mvn clean package`. The executable jar `mgttg-0.0.1-SNAPSHOT.jar` will be created under `target` folder.
  - To run the application, execute `java -jar target\mgttg-0.0.1-SNAPSHOT.jar <sample file path>`
 
 ## Approach
