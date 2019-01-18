@@ -21,14 +21,6 @@ public class CreditsQuestionInstruction implements ParseableInstruction {
 		}
 	}
 
-	public List<String> getAliases() {
-		return aliases;
-	}
-
-	public String getMetalType() {
-		return metalType;
-	}
-
 	@Override
 	public void updateProcessingState(ProcessingState state) {
 		StringBuilder responseBuilder = new StringBuilder();
@@ -43,4 +35,11 @@ public class CreditsQuestionInstruction implements ParseableInstruction {
 		return InstructionType.CREDITS_QUESTION;
 	}
 
+	public List<String> getAliases() {
+		return aliases;
+	}
+
+	public String getMetalType() {
+		return metalType;
+	}
 }

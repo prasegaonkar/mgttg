@@ -67,14 +67,14 @@ public class RomanToArabicNumberConvertor implements RomanNumberConvertor {
 	}
 
 	private boolean hasInvalidPattern(String romanNumber) {
-		return invalidPatterns().stream().anyMatch(x -> romanNumber.contains(x));
+		return getInvalidPatterns().stream().anyMatch(x -> romanNumber.contains(x));
 	}
 
 	private boolean containsInvalidCharacter(String romanNumber) {
 		return romanNumber.chars().mapToObj(c -> (char) c).anyMatch(x -> !literalValues.containsKey(x));
 	}
 
-	private static List<String> invalidPatterns() {
+	private static List<String> getInvalidPatterns() {
 		final List<String> IXCM_MORE_THAN_3_TIMES_IN_SUCCESSION = Arrays.asList("IIII", "XXXX", "CCCC", "MMMM");
 		final List<String> REPEATING_DLV = Arrays.asList("DD", "LL", "VV");
 		final List<String> I_BEFORE_ANYTHING_BUT_VX = Arrays.asList("IL", "IC", "ID", "IM");

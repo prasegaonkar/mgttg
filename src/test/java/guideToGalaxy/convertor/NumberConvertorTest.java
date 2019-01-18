@@ -17,32 +17,32 @@ public class NumberConvertorTest {
 
 	@Test
 	public void nullConvertsToNull() {
-		assertThat(convertor.convert(null)).isNull();
+		validateConversionIsNull(null);
 	}
 
 	@Test
 	public void blankConvertsToNull() {
-		assertThat(convertor.convert("  ")).isNull();
+		validateConversionIsNull("  ");
 	}
 
 	@Test
 	public void invalidConvertsToNull() {
-		assertThat(convertor.convert("invalid")).isNull();
+		validateConversionIsNull("invalid");
 	}
 
 	@Test
 	public void test_IXCM_MoreThan3TimesInSuccessionConvertsToNull() {
-		assertThat(convertor.convert("XIIII")).isNull();
-		assertThat(convertor.convert("XXXXI")).isNull();
-		assertThat(convertor.convert("CCCCX")).isNull();
-		assertThat(convertor.convert("MMMMI")).isNull();
+		validateConversionIsNull("XIIII");
+		validateConversionIsNull("XXXXI");
+		validateConversionIsNull("CCCCX");
+		validateConversionIsNull("MMMMI");
 	}
 
 	@Test
 	public void test_DLV_MoreThan1TimesInSuccessionConvertsToNull() {
-		assertThat(convertor.convert("DDC")).isNull();
-		assertThat(convertor.convert("LLX")).isNull();
-		assertThat(convertor.convert("VVI")).isNull();
+		validateConversionIsNull("DDC");
+		validateConversionIsNull("LLX");
+		validateConversionIsNull("VVI");
 	}
 
 	@Test
@@ -85,6 +85,10 @@ public class NumberConvertorTest {
 
 	private void validateConversion(final String romanNumber, final int expected) {
 		assertThat(convertor.convert(romanNumber)).isEqualTo(expected);
+	}
+
+	private void validateConversionIsNull(final String romanNumber) {
+		assertThat(convertor.convert(romanNumber)).isNull();
 	}
 
 }

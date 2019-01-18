@@ -6,14 +6,6 @@ public class LiteralDeclarationInstruction implements ParseableInstruction {
 	private String literalAlias;
 	private Character literal;
 
-	public String getLiteralAlias() {
-		return literalAlias;
-	}
-
-	public Character getLiteral() {
-		return literal;
-	}
-
 	@Override
 	public void parse(String input) {
 		String[] splits = input.split(" is ");
@@ -29,6 +21,14 @@ public class LiteralDeclarationInstruction implements ParseableInstruction {
 	@Override
 	public InstructionType getType() {
 		return InstructionType.LITERAL_DECLARATION;
+	}
+
+	public String getLiteralAlias() {
+		return literalAlias;
+	}
+
+	public Character getLiteral() {
+		return literal;
 	}
 
 }

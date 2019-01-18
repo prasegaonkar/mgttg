@@ -16,10 +16,6 @@ public class LiteralQuestionInstruction implements ParseableInstruction {
 		aliases = Stream.of(splits).collect(Collectors.toList());
 	}
 
-	public List<String> getAliases() {
-		return aliases;
-	}
-
 	@Override
 	public void updateProcessingState(ProcessingState state) {
 		StringBuilder responseBuilder = new StringBuilder();
@@ -31,6 +27,10 @@ public class LiteralQuestionInstruction implements ParseableInstruction {
 	@Override
 	public InstructionType getType() {
 		return InstructionType.LITERAL_QUESTION;
+	}
+
+	public List<String> getAliases() {
+		return aliases;
 	}
 
 }

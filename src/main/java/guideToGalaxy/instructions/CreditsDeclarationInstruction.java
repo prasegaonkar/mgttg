@@ -26,6 +26,16 @@ public class CreditsDeclarationInstruction implements ParseableInstruction {
 
 	}
 
+	@Override
+	public void updateProcessingState(ProcessingState state) {
+		state.calculatePerUnitCreditValue(metalType, aliases, creditValue);
+	}
+
+	@Override
+	public InstructionType getType() {
+		return InstructionType.CREDITS_DECLARATION;
+	}
+
 	public List<String> getAliases() {
 		return aliases;
 	}
@@ -36,16 +46,6 @@ public class CreditsDeclarationInstruction implements ParseableInstruction {
 
 	public String getMetalType() {
 		return metalType;
-	}
-
-	@Override
-	public void updateProcessingState(ProcessingState state) {
-		state.calculatePerUnitCreditValue(metalType, aliases, creditValue);
-	}
-
-	@Override
-	public InstructionType getType() {
-		return InstructionType.CREDITS_DECLARATION;
 	}
 
 }
