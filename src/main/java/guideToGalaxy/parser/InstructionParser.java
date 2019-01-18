@@ -1,7 +1,6 @@
 package guideToGalaxy.parser;
 
 import guideToGalaxy.instructions.Instruction;
-import guideToGalaxy.instructions.InstructionFactory;
 import guideToGalaxy.instructions.InstructionType;
 import guideToGalaxy.instructions.ParseableInstruction;
 
