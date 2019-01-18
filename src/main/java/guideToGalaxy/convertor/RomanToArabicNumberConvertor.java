@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class ToArabicConvertor implements RomanNumberConvertor {
+public class RomanToArabicNumberConvertor implements RomanNumberConvertor {
 	private final static Map<Character, Integer> literalValues = new HashMap<>();
 
 	static {
@@ -23,7 +23,7 @@ public class ToArabicConvertor implements RomanNumberConvertor {
 	@Override
 	public Integer convert(String romanNumber) {
 		if (isNotValid(romanNumber)) {
-			return null;
+			throw new InvalidRomanNumberException();
 		}
 
 		return calcualate(toListOfChars(romanNumber));

@@ -20,8 +20,12 @@ public class MGTTGInstructionsProcessor implements InstructionsProcessor {
 		if (inputs != null && inputs.size() > 0) {
 			ProcessingState state = new ProcessingState(convertor);
 			inputs.forEach(input -> {
-				Instruction instruction = parser.parse(input);
-				instruction.updateProcessingState(state);
+				try {
+					Instruction instruction = parser.parse(input);
+					instruction.updateProcessingState(state);
+				} catch (Exception ex) {
+					state.addResponse("I have no idea what you are talking about");
+				}
 			});
 			return state;
 		}

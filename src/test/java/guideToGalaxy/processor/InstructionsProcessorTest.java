@@ -39,7 +39,7 @@ public class InstructionsProcessorTest {
 	@Test
 	public void validateSampleInput() throws Exception {
 		final String sampleFile = "sample.txt";
-		List<String> lines = readSampleFile(sampleFile);
+		List<String> lines = readFile(sampleFile);
 		assertThat(lines.size()).isEqualTo(12);
 		ProcessingState state = processor.process(lines);
 		assertThat(state).isNotNull();
@@ -67,8 +67,26 @@ public class InstructionsProcessorTest {
 		assertThat(responses.get(4)).isEqualTo("I have no idea what you are talking about");
 	}
 
-	private List<String> readSampleFile(final String sampleFile) throws Exception {
-		Path path = Paths.get(getClass().getClassLoader().getResource(sampleFile).toURI());
+	@Test
+	public void validateNegativeSampleInput() throws Exception {
+		final String sampleFile = "negativeSample.txt";
+		List<String> lines = readFile(sampleFile);
+		ProcessingState state = processor.process(lines);
+		assertThat(state).isNotNull();
+		final List<String> responses = state.getResponses();
+		assertThat(responses).isNotNull();
+		assertThat(responses.size()).isEqualTo(7);
+		assertThat(responses.get(0)).isEqualTo("I have no idea what you are talking about");
+		assertThat(responses.get(1)).isEqualTo("I have no idea what you are talking about");
+		assertThat(responses.get(2)).isEqualTo("I have no idea what you are talking about");
+		assertThat(responses.get(3)).isEqualTo("I have no idea what you are talking about");
+		assertThat(responses.get(4)).isEqualTo("I have no idea what you are talking about");
+		assertThat(responses.get(5)).isEqualTo("I have no idea what you are talking about");
+		assertThat(responses.get(6)).isEqualTo("I have no idea what you are talking about");
+	}
+
+	private List<String> readFile(final String file) throws Exception {
+		Path path = Paths.get(getClass().getClassLoader().getResource(file).toURI());
 		List<String> lines = Files.lines(path).collect(Collectors.toList());
 		return lines;
 	}

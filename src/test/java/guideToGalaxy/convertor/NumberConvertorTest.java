@@ -3,12 +3,17 @@ package guideToGalaxy.convertor;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import guideToGalaxy.config.ExecutionContext;
 
 public class NumberConvertorTest {
 	private RomanNumberConvertor convertor = ExecutionContext.convertor;
+
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
 
 	@BeforeClass
 	public static void setupContext() {
@@ -16,33 +21,33 @@ public class NumberConvertorTest {
 	}
 
 	@Test
-	public void nullConvertsToNull() {
-		validateConversionIsNull(null);
+	public void nullNumberThrowsInvalidException() {
+		convert(null);
 	}
 
 	@Test
-	public void blankConvertsToNull() {
-		validateConversionIsNull("  ");
+	public void blankThrowsInvalidException() {
+		convert("  ");
 	}
 
 	@Test
-	public void invalidConvertsToNull() {
-		validateConversionIsNull("invalid");
+	public void invalidThrowsInvalidException() {
+		convert("invalid");
 	}
 
 	@Test
-	public void test_IXCM_MoreThan3TimesInSuccessionConvertsToNull() {
-		validateConversionIsNull("XIIII");
-		validateConversionIsNull("XXXXI");
-		validateConversionIsNull("CCCCX");
-		validateConversionIsNull("MMMMI");
+	public void test_IXCM_MoreThan3TimesInSuccessionThrowsInvalidException() {
+		convert("XIIII");
+		convert("XXXXI");
+		convert("CCCCX");
+		convert("MMMMI");
 	}
 
 	@Test
-	public void test_DLV_MoreThan1TimesInSuccessionConvertsToNull() {
-		validateConversionIsNull("DDC");
-		validateConversionIsNull("LLX");
-		validateConversionIsNull("VVI");
+	public void test_DLV_MoreThan1TimesInSuccessionThrowsInvalidException() {
+		convert("DDC");
+		convert("LLX");
+		convert("VVI");
 	}
 
 	@Test
@@ -88,8 +93,9 @@ public class NumberConvertorTest {
 		assertThat(convertor.convert(romanNumber)).isEqualTo(expected);
 	}
 
-	private void validateConversionIsNull(final String romanNumber) {
-		assertThat(convertor.convert(romanNumber)).isNull();
+	private void convert(final String romanNumber) {
+		exception.expect(InvalidRomanNumberException.class);
+		convertor.convert(romanNumber);
 	}
 
 }
