@@ -2,15 +2,17 @@ package guideToGalaxy.convertor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class NumberConvertorTest {
-	private RomanNumberConvertor convertor;
+import guideToGalaxy.config.ExecutionContext;
 
-	@Before
-	public void setup() {
-		convertor = new RomanToArabicNumberConvertor();
+public class NumberConvertorTest {
+	private RomanNumberConvertor convertor = ExecutionContext.convertor;
+
+	@BeforeClass
+	public static void setupContext() {
+		ExecutionContext.setup();
 	}
 
 	@Test

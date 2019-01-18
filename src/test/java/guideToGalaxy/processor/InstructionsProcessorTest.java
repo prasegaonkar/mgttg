@@ -2,9 +2,7 @@ package guideToGalaxy.processor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,18 +11,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import guideToGalaxy.convertor.RomanToArabicNumberConvertor;
-import guideToGalaxy.parser.MGTTGInstructionParser;
+import guideToGalaxy.config.ExecutionContext;
 
 public class InstructionsProcessorTest {
-	private InstructionsProcessor processor;
+	private InstructionsProcessor processor = ExecutionContext.processor;
 
-	@Before
-	public void setup() {
-		processor = new MGTTGInstructionsProcessor(new MGTTGInstructionParser(), new RomanToArabicNumberConvertor());
+	@BeforeClass
+	public static void setupContext() {
+		ExecutionContext.setup();
 	}
 
 	@Test
@@ -70,7 +67,7 @@ public class InstructionsProcessorTest {
 		assertThat(responses.get(4)).isEqualTo("I have no idea what you are talking about");
 	}
 
-	private List<String> readSampleFile(final String sampleFile) throws URISyntaxException, IOException {
+	private List<String> readSampleFile(final String sampleFile) throws Exception {
 		Path path = Paths.get(getClass().getClassLoader().getResource(sampleFile).toURI());
 		List<String> lines = Files.lines(path).collect(Collectors.toList());
 		return lines;

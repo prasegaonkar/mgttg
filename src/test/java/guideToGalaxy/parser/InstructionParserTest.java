@@ -4,9 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import guideToGalaxy.config.ExecutionContext;
 import guideToGalaxy.instructions.CreditsDeclarationInstruction;
 import guideToGalaxy.instructions.CreditsQuestionInstruction;
 import guideToGalaxy.instructions.Instruction;
@@ -15,11 +16,11 @@ import guideToGalaxy.instructions.LiteralDeclarationInstruction;
 import guideToGalaxy.instructions.LiteralQuestionInstruction;
 
 public class InstructionParserTest {
-	private InstructionParser parser = null;
+	private InstructionParser parser = ExecutionContext.parser;
 
-	@Before
-	public void setup() {
-		parser = new MGTTGInstructionParser();
+	@BeforeClass
+	public static void setupContext() {
+		ExecutionContext.setup();
 	}
 
 	@Test
