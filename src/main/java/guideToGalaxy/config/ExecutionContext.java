@@ -1,7 +1,7 @@
 package guideToGalaxy.config;
 
 import guideToGalaxy.convertor.RomanNumberConvertor;
-import guideToGalaxy.convertor.RomanToArabicNumberConvertor;
+import guideToGalaxy.convertor.ToArabicConvertor;
 import guideToGalaxy.parser.InstructionParser;
 import guideToGalaxy.parser.MGTTGInstructionParser;
 import guideToGalaxy.processor.InstructionsProcessor;
@@ -15,7 +15,7 @@ public class ExecutionContext {
 
 	public static void setup() {
 		parser = new MGTTGInstructionParser();
-		convertor = new RomanToArabicNumberConvertor();
+		convertor = new ToArabicConvertor();
 		processor = new MGTTGInstructionsProcessor(parser, convertor);
 	}
 
