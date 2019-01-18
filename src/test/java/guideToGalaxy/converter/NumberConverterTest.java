@@ -1,4 +1,4 @@
-package guideToGalaxy.convertor;
+package guideToGalaxy.converter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,9 +8,11 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import guideToGalaxy.config.ExecutionContext;
+import guideToGalaxy.converter.InvalidRomanNumberException;
+import guideToGalaxy.converter.RomanNumberConverter;
 
-public class NumberConvertorTest {
-	private RomanNumberConvertor convertor = ExecutionContext.convertor;
+public class NumberConverterTest {
+	private RomanNumberConverter converter = ExecutionContext.converter;
 
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
@@ -90,12 +92,12 @@ public class NumberConvertorTest {
 	}
 
 	private void validateConversion(final String romanNumber, final int expected) {
-		assertThat(convertor.convert(romanNumber)).isEqualTo(expected);
+		assertThat(converter.convert(romanNumber)).isEqualTo(expected);
 	}
 
 	private void convert(final String romanNumber) {
 		exception.expect(InvalidRomanNumberException.class);
-		convertor.convert(romanNumber);
+		converter.convert(romanNumber);
 	}
 
 }

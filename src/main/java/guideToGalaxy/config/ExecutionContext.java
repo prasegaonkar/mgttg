@@ -1,7 +1,7 @@
 package guideToGalaxy.config;
 
-import guideToGalaxy.convertor.RomanNumberConvertor;
-import guideToGalaxy.convertor.RomanToArabicNumberConvertor;
+import guideToGalaxy.converter.RomanNumberConverter;
+import guideToGalaxy.converter.RomanToArabicNumberConverter;
 import guideToGalaxy.parser.InstructionParser;
 import guideToGalaxy.parser.MGTTGInstructionParser;
 import guideToGalaxy.processor.InstructionsProcessor;
@@ -11,12 +11,12 @@ public class ExecutionContext {
 
 	public static InstructionsProcessor processor;
 	public static InstructionParser parser;
-	public static RomanNumberConvertor convertor;
+	public static RomanNumberConverter converter;
 
 	public static void setup() {
 		parser = new MGTTGInstructionParser();
-		convertor = new RomanToArabicNumberConvertor();
-		processor = new MGTTGInstructionsProcessor(parser, convertor);
+		converter = new RomanToArabicNumberConverter();
+		processor = new MGTTGInstructionsProcessor(parser, converter);
 	}
 
 }

@@ -8,16 +8,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import guideToGalaxy.convertor.RomanNumberConvertor;
+import guideToGalaxy.converter.RomanNumberConverter;
 
 public class ProcessingState {
-	private RomanNumberConvertor convertor;
+	private RomanNumberConverter converter;
 	private Map<String, Character> aliasLiteralMappings;
 	private Map<String, BigDecimal> metalPerUnitCreditValue;
 	private List<String> responses;
 
-	public ProcessingState(RomanNumberConvertor convertor) {
-		this.convertor = convertor;
+	public ProcessingState(RomanNumberConverter converter) {
+		this.converter = converter;
 	}
 
 	public void registerAliasLiteralMapping(String alias, Character literal) {
@@ -53,7 +53,7 @@ public class ProcessingState {
 	public Integer getArabicConversion(List<String> aliases) {
 		String romanNumber = aliases.stream().map(a -> String.valueOf(aliasLiteralMappings.get(a)))
 				.collect(Collectors.joining());
-		return convertor.convert(romanNumber);
+		return converter.convert(romanNumber);
 	}
 
 	public Map<String, BigDecimal> getMetalPerUnitCreditValue() {

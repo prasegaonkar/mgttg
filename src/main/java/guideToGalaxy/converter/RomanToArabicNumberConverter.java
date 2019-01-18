@@ -1,4 +1,4 @@
-package guideToGalaxy.convertor;
+package guideToGalaxy.converter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class RomanToArabicNumberConvertor implements RomanNumberConvertor {
+public class RomanToArabicNumberConverter implements RomanNumberConverter {
 	private final static Map<Character, Integer> literalValues = new HashMap<>();
 
 	static {

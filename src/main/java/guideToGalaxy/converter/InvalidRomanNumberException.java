@@ -1,4 +1,4 @@
-package guideToGalaxy.convertor;
+package guideToGalaxy.converter;
 
 public class InvalidRomanNumberException extends RuntimeException {
 
