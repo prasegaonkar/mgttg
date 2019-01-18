@@ -79,6 +79,7 @@ public class NumberConvertorTest {
 
 	@Test
 	public void testNumberConversion() {
+		validateConversion("MMVI", 2006);
 		validateConversion("MCMXLIV", 1944);
 		validateConversion("MCMIII", 1903);
 	}
