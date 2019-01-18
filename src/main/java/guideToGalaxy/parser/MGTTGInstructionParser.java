@@ -6,24 +6,12 @@ import static guideToGalaxy.instructions.InstructionType.INVALID;
 import static guideToGalaxy.instructions.InstructionType.LITERAL_DECLARATION;
 import static guideToGalaxy.instructions.InstructionType.LITERAL_QUESTION;
 
-import guideToGalaxy.instructions.Instruction;
-import guideToGalaxy.instructions.InstructionFactory;
 import guideToGalaxy.instructions.InstructionType;
-import guideToGalaxy.instructions.ParseableInstruction;
 
 public class MGTTGInstructionParser implements InstructionParser {
 
 	@Override
-	public Instruction parse(String input) {
-		final InstructionType type = determineType(input);
-		final Instruction instruction = InstructionFactory.create(type);
-		if (InstructionType.INVALID.equals(type) == false) {
-			((ParseableInstruction) instruction).parse(input);
-		}
-		return instruction;
-	}
-
-	private InstructionType determineType(String instruction) {
+	public InstructionType determineInstructionType(String instruction) {
 		InstructionType type = INVALID;
 		final boolean isInstructionBlank = instruction == null || "".equals(instruction.trim());
 		if (isInstructionBlank) {
