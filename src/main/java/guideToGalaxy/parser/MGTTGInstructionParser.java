@@ -7,7 +7,7 @@ import static guideToGalaxy.instructions.InstructionType.LITERAL_DECLARATION;
 import static guideToGalaxy.instructions.InstructionType.LITERAL_QUESTION;
 
 import guideToGalaxy.instructions.Instruction;
-import guideToGalaxy.instructions.InstructionBuilder;
+import guideToGalaxy.instructions.InstructionFactory;
 import guideToGalaxy.instructions.InstructionType;
 import guideToGalaxy.instructions.ParseableInstruction;
 
@@ -16,7 +16,7 @@ public class MGTTGInstructionParser implements InstructionParser {
 	@Override
 	public Instruction parse(String input) {
 		final InstructionType type = determineType(input);
-		final Instruction instruction = InstructionBuilder.create(type);
+		final Instruction instruction = InstructionFactory.create(type);
 		if (InstructionType.INVALID.equals(type) == false) {
 			((ParseableInstruction) instruction).parse(input);
 		}

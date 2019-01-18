@@ -1,6 +1,6 @@
 package guideToGalaxy.instructions;
 
-public class InstructionBuilder {
+public class InstructionFactory {
 	public static Instruction create(InstructionType type) {
 		switch (type) {
 		case CREDITS_DECLARATION:
